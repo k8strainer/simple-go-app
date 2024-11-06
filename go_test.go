@@ -4,20 +4,24 @@ import (
     "net/http"
     "net/http/httptest"
     "testing"
-
-    "github.com/stretchr/testify/assert"
 )
 
 func TestHelloHandler(t *testing.T) {
     req, err := http.NewRequest("GET", "/", nil)
     if err != nil {
-        t.Fatal(err)
+        t.Fatalf("Failed to create request: %v", err)
     }
 
     rr := httptest.NewRecorder()
     handler := http.HandlerFunc(helloHandler)
     handler.ServeHTTP(rr, req)
 
-    assert.Equal(t, http.StatusOK, rr.Code)
-    assert.Equal(t, "Hello, World!\n", rr.Body.String())
+    if status := rr.Code; status != http.StatusOK {
+        t.Errorf("Handler returned wrong status code: got %v want %v", status, http.StatusOK)
+    }
+
+    expected := "Hello, World!\n"
+    if rr.Body.String() != expected {
+        t.Errorf("Handler returned unexpected body: got %v want %v", rr.Body.String(), expected)
+    }
 }
