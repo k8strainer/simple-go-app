@@ -1,17 +1,28 @@
-FROM golang:1.18-alpine as golang
+# Use official Golang image as builder
+FROM golang:1.18 AS builder
 
 WORKDIR /app
+
+# Copy the Go modules and install dependencies
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy the rest of the application code
 COPY . .
 
-RUN go mod download
-RUN go mod verify
+# Build the application
+RUN CGO_ENABLED=0 GOOS=linux go build -o simple-go-app main.go
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /server .
+# Use a smaller image for running the application
+FROM alpine:3.14
 
-FROM gcr.io/distroless/static-debian11
+WORKDIR /app
 
-COPY --from=golang /server .
+# Copy the built binary from the builder stage
+COPY --from=builder /app/simple-go-app .
 
+# Expose the application port
 EXPOSE 8080
 
-CMD ["/server"]
+# Run the application
+CMD ["./simple-go-app"]
