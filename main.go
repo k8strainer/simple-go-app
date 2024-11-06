@@ -1,13 +1,20 @@
 package main
 
 import (
-  "net/http"
+    "fmt"
+    "log"
+    "net/http"
 )
 
-func main() {
-  http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-    w.Write([]byte("Hello, World!"))
-  })
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "Hello, World!")
+}
 
-  http.ListenAndServe(":8000", nil)
+func main() {
+    http.HandleFunc("/", helloHandler)
+    port := ":8080"
+    log.Printf("Starting server on port %s\n", port)
+    if err := http.ListenAndServe(port, nil); err != nil {
+        log.Fatalf("Server failed: %s", err)
+    }
 }
