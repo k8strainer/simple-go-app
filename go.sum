@@ -1,10 +1,4 @@
 go mod tidy
 
-github.com/davecgh/go-spew v1.1.1 h1:1k1bfEli4GoS4JSzEcmhqDXvki5k1czhLRx/WLE6s48=
-github.com/davecgh/go-spew v1.1.1/go.mod h1:Mz/jp8g7CkgzJWNLItLwRxjkGIuD0lbjNEpAnwDlG2Y=
-github.com/pmezard/go-difflib v1.0.0 h1:dtU0/K6uGXIioKP3SF2WDXzWqenqJdAwrUh4kUgU36A=
-github.com/pmezard/go-difflib v1.0.0/go.mod h1:roLAHl1IwY3gbkO6n6Wy/l+fvgWc/k9G5klovAhT7fg=
-github.com/stretchr/objx v0.1.0 h1:W9r1v3SWhNT3Ryhs4YvN4UKrdZtMg7x68kwQE8tH0i0=
-github.com/stretchr/objx v0.1.0/go.mod h1:hmt3pVfprkUWT4hzJfBSCO9fMbxos6ePTXoYfuv/6Tk=
-github.com/stretchr/testify v1.7.0 h1:6PHcBDQhx+s5SJ5MjjI4zrMxZssD5kbiEZlFu3Go7Cc=
-github.com/stretchr/testify v1.7.0/go.mod h1:XeFAxGo2oMFNAWuVSTbGA61JL4pf4KPJiqacP4rdEVg=
+go get github.com/stretchr/testify@v1.7.0
+
