@@ -1,5 +1,5 @@
 package main
-
+go get -t simple-go-app
 import (
     "net/http"
     "net/http/httptest"
