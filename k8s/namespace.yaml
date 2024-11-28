@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: simple-go-app
-  labels:
-    argocd.argoproj.io/managed-by: argocd
-    app.kubernetes.io/name: argocd-default-cluster-config
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: simple-go-app
+#  labels:
+#    argocd.argoproj.io/managed-by: argocd
+#    app.kubernetes.io/name: argocd-default-cluster-config
