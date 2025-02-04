@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: simple-go-app
-        image: gcr.io/cluster-01-290863/test/testimage:signed
+        #image: gcr.io/cluster-01-290863/test/testimage:signed
+        image: gcr.io/cluster-01-271319/test/simple-go-app:latest
         ports:
         - containerPort: 8080
         resources:
